@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AllBooks — Discover Every Kind of Book</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6v12a1 1 0 0 0 1 1h14V5H4a1 1 0 0 0-1 1z" fill="currentColor"/>
+        <path d="M5 4h14v2H5z" fill="currentColor" opacity="0.9"/>
+      </svg>
+      <h1>AllBooks</h1>
+    </div>
+    <p class="tagline">Every genre. Every shelf. Find what you love.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Search by title, author, or description..." aria-label="Search books">
+      </div>
+
+      <div class="filters">
+        <select id="genreFilter" aria-label="Filter by genre">
+          <option value="all">All genres</option>
+        </select>
+        <button id="addBookBtn" class="btn">Add a book</button>
+      </div>
+    </section>
+
+    <section id="booksSection" class="books-grid" aria-live="polite">
+      <!-- Book cards injected here -->
+    </section>
+
+    <section class="help">
+      <details>
+        <summary>How it works</summary>
+        <p>Use the search field to find related books. Add new books via the form — they are saved to your browser (localStorage).</p>
+      </details>
+    </section>
+  </main>
+
+  <!-- Add Book Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="closeModal" aria-label="Close">&times;</button>
+      <h2 id="modalTitle">Add a Book</h2>
+      <form id="bookForm">
+        <label>
+          Title
+          <input name="title" required />
+        </label>
+        <label>
+          Author
+          <input name="author" required />
+        </label>
+        <label>
+          Genre
+          <input name="genre" placeholder="e.g. Fiction, Science, Biography" required />
+        </label>
+        <label>
+          Cover Image URL
+          <input name="cover" placeholder="Optional: https://example.com/cover.jpg" />
+        </label>
+        <label>
+          Short description
+          <textarea name="description" rows="3" placeholder="A line or two about the book"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save book</button>
+          <button type="button" id="cancelBtn" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Made with books &amp; color. Stored locally in your browser.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
